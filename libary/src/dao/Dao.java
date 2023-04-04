@@ -8,8 +8,8 @@ public interface Dao {
 	List<Book> getBookList();
 	
 	// 관리자 메뉴
-	int insertBook(Book book);      // 신규도서 등록
-	int deleteBook(Book book);      // 도서 삭제
-	int updateBook(Book book);      // 도서정보 업데이트
+	int insertBook(List<Book> list);      // 신규도서 등록
+	int deleteBook(List<Book> list);      // 도서 삭제
+	int updateBook(List<Book> list);      // 도서정보 업데이트
 
 }

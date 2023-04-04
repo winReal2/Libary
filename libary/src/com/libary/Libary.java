@@ -28,13 +28,18 @@ public class Libary {
 		// 책의 리스트를 조회(파일 또는 DB를 이용해서 조회)
 		// 책을 생성해서 리스트에 담아준다!
 		
+		bookList = dao.getBookList();
+		//등록된 책 리스트 출력
+		System.out.println("라이브러리 생성자 ");
+		System.out.println("도서목록");
+		info();
 		// TODO : 일련번호가 겹치지 않았으면 좋겠다!
 		// 데이터베이스를 이용할 경우 번호를 기본키로 사용시   
 		// 번호가 중복되면 중복된 번호는 입력이 안되므로 오류 발생
-		bookList.add(new Book(1, "책1", "작가1", false));
-		bookList.add(new Book(2, "책2", "작가2", false));
-		bookList.add(new Book(3, "책3", "작가3", false));
-		bookList.add(new Book(4, "책4", "작가4", false));
+//		bookList.add(new Book(1, "책1", "작가1", false));
+//		bookList.add(new Book(2, "책2", "작가2", false));
+//		bookList.add(new Book(3, "책3", "작가3", false));
+//		bookList.add(new Book(4, "책4", "작가4", false));
 	}
 	/**
 	 * 신규도서 추가
@@ -49,8 +54,10 @@ public class Libary {
 	//리스트에 책을 추가합니다.
 	Book book = new Book(no, title, author, isRent);   //book 변수생성
 //	bookList.add(new Book(no, title, author, isRent));
+	// 신규책을 생성하여 리스트에 담음
 	bookList.add(book);
-	dao.insertBook(book);
+	//리스트에 파일을 저장
+	dao.insertBook(bookList);
 	return true;
 	}
 	/**
@@ -70,7 +77,7 @@ public class Libary {
 					return false;
 				}
 				book.setRent(true);   
-				dao.updateBook(book);
+				dao.updateBook(bookList);
 				return true;
 			}
 		}
@@ -85,7 +92,7 @@ public class Libary {
 	public boolean deleteBook(int index) {
 		for(Book book : bookList) {
 			if(index == book.getNo()) {
-				dao.deleteBook(book);
+				dao.deleteBook(bookList);
 				return bookList.remove(book);  //괄호안에 인덱스 넣으면 안됨(이유생각해보기)
 			}
 		}
@@ -106,7 +113,7 @@ public class Libary {
 				// 도서가 대여가능 상태인 경우
 				if(!book.isRent()) {
 					System.err.println("반납가능한 도서가 아닙니다. \n 관리자에게 문의해주세요.");
-					dao.updateBook(book);    //대여여부 변경 (= 책의 정보를 수정)
+					dao.updateBook(bookList);    //대여여부 변경 (= 책의 정보를 수정)
 					return false;
 				}
 				book.setRent(false);

@@ -15,7 +15,7 @@ public class Application {
 		
 		
 		//도서관 생성
-		Libary lib = new Libary("file");
+		Libary lib = new Libary("db");
 		
 		//로그아웃처리시 다시 실행
 		while(true) {

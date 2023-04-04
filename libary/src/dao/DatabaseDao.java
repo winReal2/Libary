@@ -12,21 +12,24 @@ public class DatabaseDao implements Dao{
 		return null;
 	}
 
+
+	
+
 	@Override
-	public int insertBook(Book book) {
-		System.out.println("DB - 도서정보 입력");
+	public int insertBook(List<Book> list) {
+		System.out.println("DB - 신규도서 등록");
 		return 0;
 	}
 
 	@Override
-	public int deleteBook(Book book) {
+	public int deleteBook(List<Book> list) {
 		System.out.println("DB - 도서 삭제");
 		return 0;
 	}
 
 	@Override
-	public int updateBook(Book book) {
-		System.out.println("DB - 도서 정보 업데이트");
+	public int updateBook(List<Book> list) {
+		System.out.println("DB - 도서정보 업데이트");
 		return 0;
 	}
 
